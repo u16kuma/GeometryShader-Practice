@@ -1,4 +1,4 @@
-﻿Shader "Custom/ShaderTemplate"
+﻿Shader "Custom/SketchTemplate"
 {
 	Properties
 	{
@@ -13,7 +13,7 @@
 			#pragma vertex vert
 			#pragma fragment frag
 			#pragma geometry geom
-			#include "ShaderTemplate.hlsl"
+			#include "SketchTemplate.hlsl"
 			ENDCG
 		}
 	}
