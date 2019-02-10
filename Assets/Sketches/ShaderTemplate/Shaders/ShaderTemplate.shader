@@ -1,4 +1,4 @@
-﻿Shader "Unlit/GeometryShader1"
+﻿Shader "Custom/ShaderTemplate"
 {
 	Properties
 	{
@@ -13,7 +13,7 @@
 			#pragma vertex vert
 			#pragma fragment frag
 			#pragma geometry geom
-			#include "GeometryShader1.hlsl"
+			#include "ShaderTemplate.hlsl"
 			ENDCG
 		}
 	}
