@@ -2,6 +2,8 @@
 {
 	Properties
 	{
+		_DotScale("Dot Scale", Range(0.001, 10)) = 0.01
+		_Color("Color", Color) = (1, 1, 1, 1)
 	}
 	SubShader
 	{

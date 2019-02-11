@@ -1,5 +1,8 @@
 #include "UnityCG.cginc"
 
+float _DotScale;
+float3 _Color;
+
 struct Attributes
 {
     float4 position : POSITION;
@@ -35,7 +38,6 @@ void geom(
         float3(0.5, -0.5, 0),
         float3(0.5, 0.5, 0),
     };
-    float scale = 0.01;
     
     float4 worldPos = mul(UNITY_MATRIX_M, input[0].position);
     float3 zAxis = normalize(_WorldSpaceCameraPos - worldPos.xyz);
@@ -53,7 +55,7 @@ void geom(
 
     for (i = 0; i < 4; i++)
     {
-        float4 pos = mul(UNITY_MATRIX_VP, worldPos + float4(worldRectangle[i] * scale, 0));
+        float4 pos = mul(UNITY_MATRIX_VP, worldPos + float4(worldRectangle[i] * _DotScale, 0));
         outStream.Append(MakeVaryings(pos));
     }
     outStream.RestartStrip();
@@ -61,5 +63,5 @@ void geom(
 
 half4 frag(Varyings input) : SV_Target
 {
-    return half4(1, 1, 1, 1);
+    return half4(_Color, 1);
 }
