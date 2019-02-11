@@ -27,6 +27,6 @@ public class VertexDot : MonoBehaviour
 		transform.localPosition = pos;
 
 		var renderer = GetComponent<MeshRenderer>();
-		renderer.material.SetFloat("_DotScale", Mathf.Lerp(0.001f, 0.1f, (Mathf.Sin(Time.time * dotScaleSpeed) + 1) / 2));
+		renderer.material.SetFloat("_DotScale", Mathf.Lerp(0.001f, 0.01f, (Mathf.Sin(Time.time * dotScaleSpeed) + 1) / 2));
 	}
 }

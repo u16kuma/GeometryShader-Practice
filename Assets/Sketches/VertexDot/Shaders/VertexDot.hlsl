@@ -6,6 +6,7 @@ float3 _Color;
 struct Attributes
 {
     float4 position : POSITION;
+    float3 normal : NORMAL;
 };
 
 struct Varyings
@@ -55,7 +56,9 @@ void geom(
 
     for (i = 0; i < 4; i++)
     {
-        float4 pos = mul(UNITY_MATRIX_VP, worldPos + float4(worldRectangle[i] * _DotScale, 0));
+        float4 worldNor = mul(UNITY_MATRIX_M, float4(input[0].normal, 0));
+        float scale = dot(worldNor.xyz, _WorldSpaceCameraPos) * _DotScale;
+        float4 pos = mul(UNITY_MATRIX_VP, worldPos + float4(worldRectangle[i] * scale, 0));
         outStream.Append(MakeVaryings(pos));
     }
     outStream.RestartStrip();
